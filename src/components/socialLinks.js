@@ -1,5 +1,5 @@
 import React from "react"
-import SocialLink from "./SocialLink"
+import SocialLink from "./socialLink"
 
 const SocialLinks = ({ links = [], ...props }) => {
   if (links.length === 0) return null
