@@ -1,0 +1,67 @@
+import React, { useEffect } from "react"
+import { GlobalStyles } from "../styles/global"
+
+import "./layout.css"
+import styles from "./layout.module.css"
+
+import Sidebar from "./sidebar"
+import useMouse from "@react-hook/mouse-position"
+import themes from "../styles/themes"
+import { useTheme } from "../hooks/useTheme"
+import cn from "classnames"
+import ThemeContext from "../store/ThemeContext"
+
+const ratio = 5
+
+const Layout = ({ title, children }) => {
+  const [theme, toggleTheme] = useTheme(Object.keys(themes))
+
+  const ref = React.useRef(null)
+
+  const mouse = useMouse(ref, {
+    enterDelay: 100,
+    leaveDelay: 100,
+  })
+
+  useEffect(() => {}, [mouse])
+
+  const calcPositions = ({ clientX, clientY, elementHeight, elementWidth }) => {
+    let eyeX, eyeY
+    if (elementWidth < 800) {
+      //Mobile
+      eyeY = clientY ? clientY / (elementHeight / ratio) - 1 : 0
+      eyeX = clientX ? clientX / (elementWidth / ratio) - ratio / 2 : 0
+    } else {
+      //Desktop
+      eyeY = clientY ? clientY / (elementHeight / ratio) - ratio / 2 : 0
+      eyeX = clientX ? clientX / (elementWidth / ratio) - ratio + 1 : 0
+    }
+
+    return {
+      x: eyeX,
+      y: eyeY,
+    }
+  }
+
+  const { x, y } = calcPositions(mouse)
+
+  return (
+    <ThemeContext.Provider value={{ theme: themes[theme], toggleTheme }}>
+      <GlobalStyles theme={themes[theme]} />
+      <div ref={ref} className={styles.layout}>
+        <div className={cn(styles.main, "sideborder")}>
+          <div className={styles.content}>
+            <h1 className={styles.pagetitle}>{title}</h1>
+            {children}
+          </div>
+          <footer className={styles.footer}></footer>
+        </div>
+        <div className={cn(styles.sidebar, "sidebar")}>
+          <Sidebar avatar={{ eyes: { x, y } }} />
+        </div>
+      </div>
+    </ThemeContext.Provider>
+  )
+}
+
+export default Layout

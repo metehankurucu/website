@@ -1,0 +1,12 @@
+.sidebar {
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 20px 0px;
+}

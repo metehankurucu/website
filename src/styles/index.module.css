@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 50px;
+  align-self: center;
+  letter-spacing: 2px;
+}
+
+.about {
+  max-width: 700px;
+  margin: auto;
+  font-family: Muli;
+  font-size: 1.5rem;
+}
+
+.name {
+  font-family: Pacifico;
+  font-size: 3.2rem;
+}
+
+.desktop {
+  height: 250px;
+  margin-top: 3rem;
+}
+
+.socialicon {
+  font-size: 34px;
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+    margin-top: 5px;
+  }
+}
