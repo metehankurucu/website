@@ -5,7 +5,7 @@ import "./layout.css"
 import styles from "./layout.module.css"
 
 import Sidebar from "./sidebar"
-import useMouse from "@react-hook/mouse-position"
+
 import themes from "../styles/themes"
 import { useTheme } from "../hooks/useTheme"
 import cn from "classnames"
@@ -13,17 +13,21 @@ import ThemeContext from "../store/ThemeContext"
 
 const ratio = 5
 
+const isClient = typeof window !== "undefined"
+
 const Layout = ({ title, children }) => {
   const [theme, toggleTheme] = useTheme(Object.keys(themes))
 
   const ref = React.useRef(null)
 
-  const mouse = useMouse(ref, {
-    enterDelay: 100,
-    leaveDelay: 100,
-  })
-
-  useEffect(() => {}, [mouse])
+  let mouse = { clientX: 0, clientY: 0, elementHeight: 0, elementWidth: 0 }
+  if (isClient) {
+    const useMouse = require("@react-hook/mouse-position")
+    mouse = useMouse(ref, {
+      enterDelay: 100,
+      leaveDelay: 100,
+    })
+  }
 
   const calcPositions = ({ clientX, clientY, elementHeight, elementWidth }) => {
     let eyeX, eyeY
