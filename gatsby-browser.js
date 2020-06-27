@@ -5,7 +5,7 @@
  */
 
 // You can delete this file if you're not using it
-const { default: themes } = require("./src/styles/themes")
+const themes = require("./src/styles/themes")
 
 // You can delete this file if you're not using it
 exports.onClientEntry = () => {
