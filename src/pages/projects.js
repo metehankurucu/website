@@ -1,9 +1,10 @@
 import React from "react"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ProjectsList from "../components/ProjectsList"
+import ProjectsList from "../components/projects"
 
-const IndexPage = ({ location }) => {
+const ProjectsPage = ({ location }) => {
   return (
     <Layout path={location.pathname} title="Projects">
       <SEO title="Home" />
@@ -11,4 +12,4 @@ const IndexPage = ({ location }) => {
     </Layout>
   )
 }
-export default IndexPage
+export default ProjectsPage

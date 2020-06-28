@@ -1,12 +1,15 @@
-import React, { useState } from "react"
-import MyAvatar from "./MyAvatar"
+import React, { useState, useContext } from "react"
+
 import styles from "./sidebar.module.css"
-import { NAV_LINKS } from "../data/links"
-import Navigation from "./navigation"
-import ThemeToggler from "./theme-toggler"
+
+import MyAvatar from "../MyAvatar"
+import Navigation from "../navigation"
+import ThemeToggler from "../themeToggler"
+
 import cn from "classnames"
-import { useContext } from "react"
-import ThemeContext from "../store/ThemeContext"
+
+import ThemeContext from "../../store/ThemeContext"
+import { NAV_LINKS } from "../../data/links"
 
 const Sidebar = ({ avatar, path, children }) => {
   const { toggleTheme } = useContext(ThemeContext)

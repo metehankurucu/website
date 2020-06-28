@@ -1,15 +1,15 @@
-import React, { useEffect } from "react"
-import { GlobalStyles } from "../styles/global"
+import React, { useTheme } from "react"
 
+import { GlobalStyles } from "../../styles/global"
 import "./layout.css"
 import styles from "./layout.module.css"
 
-import Sidebar from "./sidebar"
-
-import themes from "../styles/themes"
-import { useTheme } from "../hooks/useTheme"
 import cn from "classnames"
-import ThemeContext from "../store/ThemeContext"
+
+import Sidebar from "../sidebar"
+
+import ThemeContext from "../../store/ThemeContext"
+import themes from "../../styles/themes"
 
 const fakeMouseHook = (ref, options) => {
   return { clientX: 0, clientY: 0, elementHeight: 0, elementWidth: 0 }

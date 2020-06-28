@@ -1,14 +1,14 @@
 import React from "react"
+import cn from "classnames"
 
 import styles from "../styles/index.module.css"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Desktop from "../components/svg/desktop"
+import SocialLinks from "../components/SocialLinks"
 
-import cn from "classnames"
 import { SOCIAL_LINKS } from "../data/links"
-import SocialLinks from "../components/socialLinks"
 
 const IndexPage = ({ location }) => {
   return (

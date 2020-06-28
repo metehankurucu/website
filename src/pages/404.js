@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+const NotFoundPage = () => (
   <Layout title="404: NOT FOUND">
     <SEO title="404: Not found" />
     <p style={{ textAlign: "center" }}>
@@ -12,4 +12,4 @@ const IndexPage = () => (
   </Layout>
 )
 
-export default IndexPage
+export default NotFoundPage

@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "private": true,
+  "private": false,
   "description": "My website source codes",
   "version": "1.0.0",
   "author": "Metehan Kurucu",

@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./theme-toggler.module.css"
+import styles from "./themeToggler.module.css"
 import { IoMdColorWand } from "react-icons/io"
 
 const ThemeToggler = ({ toggleTheme }) => {

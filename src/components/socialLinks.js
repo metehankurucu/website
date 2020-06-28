@@ -1,5 +1,4 @@
 import React from "react"
-import SocialLink from "./socialLink"
 
 const SocialLinks = ({ links = [], ...props }) => {
   if (links.length === 0) return null
@@ -14,6 +13,14 @@ const SocialLinks = ({ links = [], ...props }) => {
         />
       ))}
     </div>
+  )
+}
+
+const SocialLink = ({ url, icon, ...props }) => {
+  return (
+    <a href={url} style={{ margin: 8 }} {...props}>
+      {icon}
+    </a>
   )
 }
 

@@ -19,7 +19,7 @@ const SOCIAL_LINKS = [
     icon: <IoLogoLinkedin />,
   },
   {
-    url: "/",
+    url: "https://www.instagram.com/metehan.kurucu/",
     icon: <IoLogoInstagram />,
   },
 ]

@@ -7,15 +7,15 @@ import "react-vertical-timeline-component/style.min.css"
 
 import styles from "./projects.module.css"
 
-import useWindowSize from "../hooks/useWindowSize"
-import useProjectImages from "../hooks/useProjectImages"
+import useWindowSize from "../../hooks/useWindowSize"
+import useProjectImages from "../../hooks/useProjectImages"
 
 import Rodal from "rodal"
 import "rodal/lib/rodal.css"
 
-import PROJECTS from "../data/projects"
-import ThemeContext from "../store/ThemeContext"
-import themes from "../styles/themes"
+import PROJECTS from "../../data/projects"
+import ThemeContext from "../../store/ThemeContext"
+import themes from "../../styles/themes"
 
 const ProjectsList = () => {
   const size = useWindowSize()
@@ -63,7 +63,6 @@ const ProjectsList = () => {
                   return (
                     <img
                       onClick={e => {
-                        console.log((e.currentTarget.className += "img-modal"))
                         setModal({
                           visible: true,
                           img: node.childImageSharp.fluid.src,
@@ -76,6 +75,7 @@ const ProjectsList = () => {
                         maxHeight: 200,
                         alignSelf: "center",
                         objectFit: "contain",
+                        borderRadius: 8,
                       }}
                       key={index.toString()}
                       src={node.childImageSharp.fluid.src}
