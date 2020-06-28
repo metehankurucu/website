@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 const imagesQuery = graphql`
   {
