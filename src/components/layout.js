@@ -11,23 +11,26 @@ import { useTheme } from "../hooks/useTheme"
 import cn from "classnames"
 import ThemeContext from "../store/ThemeContext"
 
-const ratio = 5
+const fakeMouseHook = (ref, options) => {
+  return { clientX: 0, clientY: 0, elementHeight: 0, elementWidth: 0 }
+}
 
 const isClient = typeof window !== "undefined"
+const useMouse = isClient
+  ? require("@react-hook/mouse-position").default
+  : fakeMouseHook
+
+const ratio = 5
 
 const Layout = ({ title, children }) => {
   const [theme, toggleTheme] = useTheme(Object.keys(themes))
 
-  const ref = React.useRef(null)
+  let ref = React.useRef(null)
 
-  let mouse = { clientX: 0, clientY: 0, elementHeight: 0, elementWidth: 0 }
-  if (isClient) {
-    const useMouse = require("@react-hook/mouse-position")
-    mouse = useMouse(ref, {
-      enterDelay: 100,
-      leaveDelay: 100,
-    })
-  }
+  const mouse = useMouse(ref, {
+    enterDelay: 100,
+    leaveDelay: 100,
+  })
 
   const calcPositions = ({ clientX, clientY, elementHeight, elementWidth }) => {
     let eyeX, eyeY
