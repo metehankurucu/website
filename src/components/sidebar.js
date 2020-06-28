@@ -3,14 +3,12 @@ import MyAvatar from "./MyAvatar"
 import styles from "./sidebar.module.css"
 import { NAV_LINKS } from "../data/links"
 import Navigation from "./navigation"
-import useLocationPath from "../hooks/useLocationPath"
 import ThemeToggler from "./theme-toggler"
 import cn from "classnames"
 import { useContext } from "react"
 import ThemeContext from "../store/ThemeContext"
 
-const Sidebar = ({ avatar, children }) => {
-  const path = useLocationPath()
+const Sidebar = ({ avatar, path, children }) => {
   const { toggleTheme } = useContext(ThemeContext)
   const [onMouse, setOnMouse] = useState(false)
 

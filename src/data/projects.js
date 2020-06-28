@@ -1,3 +1,7 @@
+import React from "react"
+import { MdComputer } from "react-icons/md"
+import { BsPhone } from "react-icons/bs"
+
 const PROJECTS = [
   {
     name: "Seyyah",
@@ -6,6 +10,7 @@ const PROJECTS = [
     key: "seyyah",
     url: "",
     company: "at Cyber Istanbul",
+    icon: <BsPhone />,
   },
   {
     name: "Öğrenci Koçluğu",
@@ -13,6 +18,7 @@ const PROJECTS = [
       "A web application for students preparing for the university exam. Students can view the exam result graphics, record the lessons they are studying, and track books and subjects of lessons.",
     key: "ogrencikoclugu",
     url: "",
+    icon: <MdComputer />,
   },
   {
     name: "Meeth",
@@ -20,6 +26,7 @@ const PROJECTS = [
       "A mobile app that allows people to meet people close to each other by solving questions",
     key: "meeth",
     url: "",
+    icon: <BsPhone />,
   },
   {
     name: "Test Avatarı",
@@ -28,6 +35,7 @@ const PROJECTS = [
     key: "testavatari",
     url: "",
     company: "at Cyber Istanbul",
+    icon: <BsPhone />,
   },
   {
     name: "Shift",
@@ -35,6 +43,7 @@ const PROJECTS = [
       "A mobile app to make it easier for employees and managers to prepare their weekly schedule.",
     key: "shift",
     url: "",
+    icon: <BsPhone />,
   },
   {
     name: "Filexist",
@@ -42,6 +51,7 @@ const PROJECTS = [
       "A web app that allows people to easily share files with small or large groups fast.",
     key: "filexist",
     url: "",
+    icon: <MdComputer />,
   },
 ]
 

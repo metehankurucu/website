@@ -12,7 +12,7 @@ exports.onClientEntry = () => {
   if (typeof window !== "undefined") {
     const theme = window.localStorage.getItem("theme")
     const themes = Object.keys(themeModes)
-    if (!theme || !theme in themes) {
+    if (!theme || !themes.includes(theme)) {
       window.localStorage.setItem("theme", themes[0])
     }
   }

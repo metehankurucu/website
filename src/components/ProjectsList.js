@@ -15,10 +15,15 @@ import "rodal/lib/rodal.css"
 
 import PROJECTS from "../data/projects"
 import ThemeContext from "../store/ThemeContext"
+import themes from "../styles/themes"
 
 const ProjectsList = () => {
   const size = useWindowSize()
-  const { theme } = useContext(ThemeContext)
+  let { theme } = useContext(ThemeContext)
+
+  if (!theme || !theme.primary) {
+    theme = themes.dark
+  }
 
   const images = useProjectImages()
 
@@ -27,7 +32,10 @@ const ProjectsList = () => {
   return (
     <VerticalTimeline layout="2-columns">
       {PROJECTS.map(
-        ({ name, date = "", url, key, description, company = "" }, index) => {
+        (
+          { name, date = "", url, key, description, company = "", icon = null },
+          index
+        ) => {
           const projectImages = images?.[key] || []
           return (
             <VerticalTimelineElement
@@ -35,9 +43,10 @@ const ProjectsList = () => {
               className="vertical-timeline-element--work text-primary"
               date={date}
               contentStyle={{ background: theme.navbar }}
+              contentArrowStyle={{ borderRightColor: theme.navbar }}
               onTimelineElementClick={() => console.log(name)}
-              iconClassName="bg-secondary"
-              iconOnClick={() => console.log("hey")}
+              iconClassName="bg-secondary text-primary"
+              icon={icon}
             >
               <h3 className="vertical-timeline-element-title ">{name}</h3>
               {company && company !== "" && (

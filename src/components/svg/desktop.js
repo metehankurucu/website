@@ -1,8 +1,14 @@
 import * as React from "react"
 import ThemeContext from "../../store/ThemeContext"
+import themes from "../../styles/themes"
 
 function DesktopSvg({ height = 25, width = 25, className, ...props }) {
-  const { theme } = React.useContext(ThemeContext)
+  let { theme } = React.useContext(ThemeContext)
+
+  if (!theme || theme.primary) {
+    theme = themes.dark
+  }
+
   const pencilColor = theme.primary
   const leafColor = theme.secondary
   const objectColor = theme.navbar

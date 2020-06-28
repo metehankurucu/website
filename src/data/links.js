@@ -26,7 +26,7 @@ const SOCIAL_LINKS = [
 
 const NAV_LINKS = [
   { display: "Home", link: "/", iconLeft: <IoMdHome /> },
-  { display: "Projects", link: "/projects", iconLeft: <IoIosPaper /> },
+  { display: "Projects", link: "/projects/", iconLeft: <IoIosPaper /> },
   {
     display: "Source Code",
     link: "https://github.com/metehankurucu/website",

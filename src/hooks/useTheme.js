@@ -6,7 +6,7 @@ export const useTheme = (themes = ["dark"]) => {
     ? window.localStorage.getItem("theme")
     : themes[0]
   const [theme, setTheme] = useState(() => {
-    if (initalTheme in themes) {
+    if (themes.includes(initalTheme)) {
       return initalTheme
     }
     return themes[0]
@@ -14,7 +14,7 @@ export const useTheme = (themes = ["dark"]) => {
   const [mountedComponent, setMountedComponent] = useState(false)
 
   const setMode = mode => {
-    const themeMode = mode in themes ? mode : themes[0]
+    const themeMode = themes.includes(mode) ? mode : themes[0]
     if (isClient) {
       window.localStorage.setItem("theme", themeMode)
     }
@@ -24,8 +24,11 @@ export const useTheme = (themes = ["dark"]) => {
   const toggleTheme = () => {
     const length = themes.length
     const index = themes.indexOf(theme)
-
-    setMode(themes[(index + 1) % length])
+    console.log(themes[(index + 1) % length])
+    if (false) {
+    } else {
+      setMode(themes[(index + 1) % length])
+    }
   }
 
   useEffect(() => {

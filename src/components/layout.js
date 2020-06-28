@@ -22,9 +22,8 @@ const useMouse = isClient
 
 const ratio = 5
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, path, children }) => {
   const [theme, toggleTheme] = useTheme(Object.keys(themes))
-
   let ref = React.useRef(null)
 
   const mouse = useMouse(ref, {
@@ -54,7 +53,7 @@ const Layout = ({ title, children }) => {
 
   return (
     <ThemeContext.Provider value={{ theme: themes[theme], toggleTheme }}>
-      <GlobalStyles theme={themes[theme]} />
+      <GlobalStyles theme={(themes && themes[theme]) || themes.dark} />
       <div ref={ref} className={styles.layout}>
         <div className={cn(styles.main, "sideborder")}>
           <div className={styles.content}>
@@ -64,7 +63,7 @@ const Layout = ({ title, children }) => {
           <footer className={styles.footer}></footer>
         </div>
         <div className={cn(styles.sidebar, "sidebar")}>
-          <Sidebar avatar={{ eyes: { x, y } }} />
+          <Sidebar path={path} avatar={{ eyes: { x, y } }} />
         </div>
       </div>
     </ThemeContext.Provider>

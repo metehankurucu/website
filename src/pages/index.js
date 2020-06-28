@@ -10,9 +10,9 @@ import cn from "classnames"
 import { SOCIAL_LINKS } from "../data/links"
 import SocialLinks from "../components/socialLinks"
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   return (
-    <Layout title="">
+    <Layout path={location.pathname} title="">
       <SEO title="Home" />
       <div className={cn(styles.container)}>
         <h1 className={cn(styles.name)}>Hi, I'm Metehan.</h1>
