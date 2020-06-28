@@ -5,7 +5,12 @@ export const useTheme = (themes = ["dark"]) => {
   const initalTheme = isClient
     ? window.localStorage.getItem("theme")
     : themes[0]
-  const [theme, setTheme] = useState(initalTheme)
+  const [theme, setTheme] = useState(() => {
+    if (initalTheme in themes) {
+      return initalTheme
+    }
+    return themes[0]
+  })
   const [mountedComponent, setMountedComponent] = useState(false)
 
   const setMode = mode => {
@@ -27,11 +32,7 @@ export const useTheme = (themes = ["dark"]) => {
     const localTheme = isClient
       ? window.localStorage.getItem("theme")
       : themes[0]
-    if (localTheme && themes.includes(localTheme)) {
-      setTheme(localTheme)
-    } else {
-      setMode(themes[0])
-    }
+    setTheme(localTheme)
     setMountedComponent(true)
   }, [])
   return [theme, toggleTheme, mountedComponent]
