@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react"
 
-export const useTheme = (themes = ["light", "dark"]) => {
+export const useTheme = (themes = ["dark"]) => {
   const isClient = typeof window !== `undefined`
   const initalTheme = isClient
     ? window.localStorage.getItem("theme")
     : themes[0]
   const [theme, setTheme] = useState(initalTheme)
   const [mountedComponent, setMountedComponent] = useState(false)
+
   const setMode = mode => {
+    const themeMode = mode in themes ? mode : themes[0]
     if (isClient) {
-      window.localStorage.setItem("theme", mode)
+      window.localStorage.setItem("theme", themeMode)
     }
-    setTheme(mode)
+    setTheme(themeMode)
   }
 
   const toggleTheme = () => {
