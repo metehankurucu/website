@@ -44,7 +44,6 @@ const ProjectsList = () => {
               date={date}
               contentStyle={{ background: theme.navbar }}
               contentArrowStyle={{ borderRightColor: theme.navbar }}
-              onTimelineElementClick={() => console.log(name)}
               iconClassName="bg-secondary text-primary"
               icon={icon}
             >
@@ -79,6 +78,7 @@ const ProjectsList = () => {
                       }}
                       key={index.toString()}
                       src={node.childImageSharp.fluid.src}
+                      alt="Project Image"
                     />
                   )
                 })}
@@ -109,6 +109,7 @@ const ProjectsList = () => {
             objectFit: "contain",
           }}
           src={modal.img}
+          alt="Project Image Zoom"
         />
       </Rodal>
     </VerticalTimeline>

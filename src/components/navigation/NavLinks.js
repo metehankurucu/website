@@ -9,7 +9,7 @@ const NavLinks = ({ links = [], path }) => {
       display={display}
       link={link}
       icon={icon}
-      selected={path == link}
+      selected={path === link}
       {...props}
     />
   ))

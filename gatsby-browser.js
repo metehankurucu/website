@@ -6,7 +6,6 @@
 
 // You can delete this file if you're not using it
 const themeModes = require("./src/styles/themes").default
-
 // You can delete this file if you're not using it
 exports.onClientEntry = () => {
   if (typeof window !== "undefined") {

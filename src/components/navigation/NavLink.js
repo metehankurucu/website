@@ -1,8 +1,9 @@
 import React from "react"
+
 import { Link as GatbsyLink } from "gatsby"
+import cn from "classnames"
 
 import styles from "./navigation.module.css"
-import cn from "classnames"
 
 const NavLink = ({
   link,

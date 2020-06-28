@@ -7,7 +7,7 @@ import ProjectsList from "../components/projects"
 const ProjectsPage = ({ location }) => {
   return (
     <Layout path={location.pathname} title="Projects">
-      <SEO title="Home" />
+      <SEO title="Projects" />
       <ProjectsList />
     </Layout>
   )

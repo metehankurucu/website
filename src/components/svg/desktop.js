@@ -3,10 +3,11 @@ import ThemeContext from "../../store/ThemeContext"
 import themes from "../../styles/themes"
 
 function DesktopSvg({ height = 25, width = 25, className, ...props }) {
-  let { theme } = React.useContext(ThemeContext)
+  const ctx = React.useContext(ThemeContext)
 
-  if (!theme || theme.primary) {
-    theme = themes.dark
+  let theme = themes.dark
+  if (ctx?.theme?.primary) {
+    theme = ctx.theme
   }
 
   const pencilColor = theme.primary

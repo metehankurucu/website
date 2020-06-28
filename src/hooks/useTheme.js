@@ -24,7 +24,6 @@ export const useTheme = (themes = ["dark"]) => {
   const toggleTheme = () => {
     const length = themes.length
     const index = themes.indexOf(theme)
-    console.log(themes[(index + 1) % length])
     if (false) {
     } else {
       setMode(themes[(index + 1) % length])

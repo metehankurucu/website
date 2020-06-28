@@ -1,9 +1,9 @@
 import React from "react"
+import cn from "classnames"
 
 import styles from "./navigation.module.css"
 
 import NavLinks from "./NavLinks"
-import cn from "classnames"
 
 const Navigation = ({ links, path, onMouseEnter, onMouseLeave }) => {
   return (
