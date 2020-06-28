@@ -5,13 +5,13 @@
  */
 
 // You can delete this file if you're not using it
-const themes = require("./src/styles/themes")
+const themeModes = require("./src/styles/themes").default
 
 // You can delete this file if you're not using it
 exports.onClientEntry = () => {
   if (typeof window !== "undefined") {
     const theme = window.localStorage.getItem("theme")
-    const themes = Object.keys(themes)
+    const themes = Object.keys(themeModes)
     if (!theme || !theme in themes) {
       window.localStorage.setItem("theme", themes[0])
     }
