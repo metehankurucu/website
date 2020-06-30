@@ -5,6 +5,8 @@ import {
 } from "react-vertical-timeline-component"
 import "react-vertical-timeline-component/style.min.css"
 
+import cn from "classnames"
+
 import styles from "./projects.module.css"
 
 import useWindowSize from "../../hooks/useWindowSize"
@@ -16,18 +18,21 @@ import "rodal/lib/rodal.css"
 import PROJECTS from "../../data/projects"
 import ThemeContext from "../../store/ThemeContext"
 import themes from "../../styles/themes"
+import { modalImgRatio } from "../../styles"
 
 const ProjectsList = () => {
   const size = useWindowSize()
   let { theme } = useContext(ThemeContext)
+  const images = useProjectImages()
+
+  const [modal, setModal] = useState({ visible: false, img: "" })
+
+  const modalImgMaxWidth = modalImgRatio * size.width
+  const modalImgMaxHeight = modalImgRatio * size.height
 
   if (!theme || !theme.primary) {
     theme = themes.dark
   }
-
-  const images = useProjectImages()
-
-  const [modal, setModal] = useState({ visible: false, img: "" })
 
   return (
     <VerticalTimeline layout="2-columns">
@@ -51,7 +56,9 @@ const ProjectsList = () => {
               {company && company !== "" && (
                 <p style={{ margin: 0 }}>{company}</p>
               )}
-              <p className="text-white">{description}</p>
+              <p className={cn("text-white", styles.description)}>
+                {description}
+              </p>
               <div
                 style={{
                   justifyContent: "space-evenly",
@@ -59,25 +66,26 @@ const ProjectsList = () => {
                 }}
               >
                 {projectImages.map((node, index) => {
+                  const { src } = node.childImageSharp.fluid
                   return (
                     <img
                       onClick={e => {
                         setModal({
                           visible: true,
-                          img: node.childImageSharp.fluid.src,
+                          img: src,
                         })
                       }}
                       style={{
                         cursor: "pointer",
                         margin: 5,
-                        maxWidth: 200,
-                        maxHeight: 200,
+                        maxWidth: 180,
+                        maxHeight: 180,
                         alignSelf: "center",
                         objectFit: "contain",
-                        borderRadius: 8,
+                        borderRadius: 6,
                       }}
                       key={index.toString()}
-                      src={node.childImageSharp.fluid.src}
+                      src={src}
                       alt="Project Image"
                     />
                   )
@@ -95,16 +103,16 @@ const ProjectsList = () => {
           boxShadow: "0px 0px 0px ",
           backgroundColor: "transparent",
         }}
-        height={(size.height * 2) / 3}
-        width={(size.width * 2) / 3}
+        height={modalImgMaxHeight}
+        width={modalImgMaxWidth}
         className={styles.modal}
         visible={modal.visible}
         onClose={() => setModal({ ...modal, visible: false })}
       >
         <img
           style={{
-            height: (size.height * 2) / 3,
-            width: (size.width * 2) / 3,
+            height: modalImgMaxHeight,
+            width: modalImgMaxWidth,
             alignSelf: "center",
             objectFit: "contain",
           }}

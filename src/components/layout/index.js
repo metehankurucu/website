@@ -10,6 +10,7 @@ import Sidebar from "../sidebar"
 import ThemeContext from "../../store/ThemeContext"
 import themes from "../../styles/themes"
 import { useTheme } from "../../hooks/useTheme"
+import { desktopMode, windowPartsForAvatar } from "../../styles"
 
 const fakeMouseHook = (ref, options) => {
   return { clientX: 0, clientY: 0, elementHeight: 0, elementWidth: 0 }
@@ -19,8 +20,6 @@ const isClient = typeof window !== "undefined"
 const useMouse = isClient
   ? require("@react-hook/mouse-position").default
   : fakeMouseHook
-
-const ratio = 5
 
 const Layout = ({ title, path, children }) => {
   const [theme, toggleTheme] = useTheme(Object.keys(themes))
@@ -33,14 +32,24 @@ const Layout = ({ title, path, children }) => {
 
   const calcPositions = ({ clientX, clientY, elementHeight, elementWidth }) => {
     let eyeX, eyeY
-    if (elementWidth < 800) {
+    if (elementWidth < desktopMode) {
       //Mobile
-      eyeY = clientY ? clientY / (elementHeight / ratio) - 1 : 0
-      eyeX = clientX ? clientX / (elementWidth / ratio) - ratio / 2 : 0
+      eyeY = clientY ? clientY / (elementHeight / windowPartsForAvatar) - 1 : 0
+      eyeX = clientX
+        ? clientX / (elementWidth / windowPartsForAvatar) -
+          windowPartsForAvatar / 2
+        : 0
     } else {
       //Desktop
-      eyeY = clientY ? clientY / (elementHeight / ratio) - ratio / 2 : 0
-      eyeX = clientX ? clientX / (elementWidth / ratio) - ratio + 1 : 0
+      eyeY = clientY
+        ? clientY / (elementHeight / windowPartsForAvatar) -
+          windowPartsForAvatar / 2
+        : 0
+      eyeX = clientX
+        ? clientX / (elementWidth / windowPartsForAvatar) -
+          windowPartsForAvatar +
+          1
+        : 0
     }
 
     return {
