@@ -28,7 +28,7 @@ const NAV_LINKS = [
   { display: "Home", link: "/", iconLeft: <IoMdHome /> },
   { display: "Projects", link: "/projects/", iconLeft: <IoIosPaper /> },
   {
-    display: "Source Code",
+    display: "Source Codes",
     link: "https://github.com/metehankurucu/website",
     external: true,
     iconLeft: <IoMdOpen />,

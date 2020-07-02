@@ -24,7 +24,7 @@ module.exports = {
       options: {
         fonts: [
           `Pacifico`,
-          `Muli\:300`,
+          `Muli\:300,400,400i,700`,
           `Rubik`,
           `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
         ],

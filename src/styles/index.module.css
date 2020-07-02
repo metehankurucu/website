@@ -12,6 +12,7 @@
   margin: auto;
   font-family: Muli;
   font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .name {
@@ -21,7 +22,7 @@
 
 .desktop {
   height: 250px;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 .socialicon {

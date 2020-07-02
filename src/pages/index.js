@@ -17,11 +17,11 @@ const IndexPage = ({ location }) => {
       <div className={cn(styles.container)}>
         <h1 className={cn(styles.name)}>Hi, I'm Metehan.</h1>
         <h3 className={cn("text-default", styles.about)}>
-          I am <span className={"text-primary"}>CSE</span> student at Marmara
-          University. I am developing{" "}
-          <span className={"text-primary"}>web</span> and{" "}
-          <span className={"text-primary"}>mobile apps</span>,{" "}
-          <span className={"text-primary"}>backend services</span>. I like
+          I am <strong className={"text-primary"}>CSE</strong> student at
+          Marmara University. I am developing{" "}
+          <strong className={"text-primary"}>web</strong> and{" "}
+          <strong className={"text-primary"}>mobile apps</strong>,{" "}
+          <strong className={"text-primary"}>backend services</strong>. I like
           learning technologies, concepts and developing projects.
         </h3>
         <SocialLinks
