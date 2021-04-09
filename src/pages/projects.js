@@ -8,6 +8,13 @@ const ProjectsPage = ({ location }) => {
   return (
     <Layout path={location.pathname} title="Projects">
       <SEO title="Projects" />
+      {/* <div style={{ textAlign: "center" }}>
+        Also check out my{" "}
+        <a href={"https://github.com/metehankurucu"} target="__blank"className='text-secondary' >
+          Github
+        </a>{" "}
+        for small and side projects.
+      </div> */}
       <ProjectsList />
     </Layout>
   )

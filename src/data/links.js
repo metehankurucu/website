@@ -15,7 +15,7 @@ const SOCIAL_LINKS = [
     icon: <IoLogoGithub />,
   },
   {
-    url: "https://www.linkedin.com/in/metehan-k-49893b173/",
+    url: "https://www.linkedin.com/in/metehankurucu",
     icon: <IoLogoLinkedin />,
   },
   {

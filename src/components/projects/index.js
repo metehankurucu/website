@@ -35,67 +35,76 @@ const ProjectsList = () => {
   }
 
   return (
-    <VerticalTimeline layout="2-columns">
-      {PROJECTS.map(
-        (
-          { name, date = "", url, key, description, company = "", icon = null },
-          index
-        ) => {
-          const projectImages = images?.[key] || []
-          return (
-            <VerticalTimelineElement
-              key={"project-" + name}
-              className="vertical-timeline-element--work text-primary"
-              date={date}
-              contentStyle={{ background: theme.navbar }}
-              contentArrowStyle={{ borderRightColor: theme.navbar }}
-              iconClassName="bg-secondary text-primary"
-              icon={icon}
-            >
-              <h3 className="vertical-timeline-element-title ">{name}</h3>
-              {company && company !== "" && (
-                <p style={{ margin: 0 }}>{company}</p>
-              )}
-              <p className={cn("text-white", styles.description)}>
-                {description}
-              </p>
-              <div
-                style={{
-                  justifyContent: "space-evenly",
-                  alignItems: "center",
-                }}
-              >
-                {projectImages.map((node, index) => {
-                  const { src } = node.childImageSharp.fluid
+    <div>
+      {PROJECTS.map(({ title, description, items }, index) => {
+        return (
+          <div key={index}>
+            {title && <h2>{title}</h2>}
+            {description && <p>{description}</p>}
+            <VerticalTimeline layout="2-columns">
+              {items.map(
+                (
+                  {
+                    name,
+                    date = "",
+                    url,
+                    key,
+                    description,
+                    company = "",
+                    icon = null,
+                  },
+                  index
+                ) => {
+                  const projectImages = images?.[key] || []
                   return (
-                    <img
-                      onClick={e => {
-                        setModal({
-                          visible: true,
-                          img: src,
-                        })
-                      }}
-                      style={{
-                        cursor: "pointer",
-                        margin: 5,
-                        maxWidth: 180,
-                        maxHeight: 180,
-                        alignSelf: "center",
-                        objectFit: "contain",
-                        borderRadius: 6,
-                      }}
-                      key={index.toString()}
-                      src={src}
-                      alt="Project Image"
-                    />
+                    <VerticalTimelineElement
+                      key={"project-" + name}
+                      className="vertical-timeline-element--work text-primary"
+                      date={date}
+                      contentStyle={{ background: theme.navbar }}
+                      contentArrowStyle={{ borderRightColor: theme.navbar }}
+                      iconClassName="bg-secondary text-primary"
+                      icon={icon}
+                    >
+                      <h3 className="vertical-timeline-element-title ">
+                        {name}
+                      </h3>
+                      {company && <p style={{ margin: 0 }}>{company}</p>}
+                      {url && (
+                        <a href={url} target="__blank" className={styles.url}>
+                          {url.replace(/https?:\/\//g, "")}
+                        </a>
+                      )}
+                      <p className={cn("text-white", styles.description)}>
+                        {description}
+                      </p>
+                      <div className={cn(styles.imageContainer)}>
+                        {projectImages.map((node, index) => {
+                          const { src } = node.childImageSharp.fluid
+                          return (
+                            <img
+                              onClick={e => {
+                                setModal({
+                                  visible: true,
+                                  img: src,
+                                })
+                              }}
+                              className={cn(styles.projectImage)}
+                              key={index.toString()}
+                              src={src}
+                              alt="Project Image"
+                            />
+                          )
+                        })}
+                      </div>
+                    </VerticalTimelineElement>
                   )
-                })}
-              </div>
-            </VerticalTimelineElement>
-          )
-        }
-      )}
-
+                }
+              )}
+            </VerticalTimeline>
+          </div>
+        )
+      })}
       <Rodal
         customStyles={{
           display: "flex",
@@ -120,7 +129,7 @@ const ProjectsList = () => {
           alt="Project Image Zoom"
         />
       </Rodal>
-    </VerticalTimeline>
+    </div>
   )
 }
 
